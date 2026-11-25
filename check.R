@@ -4,7 +4,8 @@
 #   Rscript check.R            run all checks
 #   Rscript check.R --rerun    also re-run your script and compare its output
 #
-#   In RStudio: open rdmai_ws26.Rproj, then source("check.R") in the console.
+#   From an R console (VS Code with the R extension, RStudio): source("check.R")
+#   with the repository folder as the working directory.
 #   To re-run the script as well: options(ladder.rerun = TRUE) first.
 #
 # It looks only at files in this repository: data/raw/ untouched, PROJECT.md

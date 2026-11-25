@@ -14,14 +14,14 @@ The data has the traps real exports have: a column in cents, listings exported t
 
 - A GitHub account (github.com, free).
 - Git on your machine, or GitHub Desktop if you prefer buttons to commands.
-- R, version 4.1 or newer (`R --version`); RStudio optional. The check uses base R only, no packages. Your agent may write the analysis in R, or in Python if that is installed.
+- R, version 4.1 or newer (`R --version`), and an editor such as VS Code or RStudio. The check uses base R only, no packages. Your agent may write the analysis in R, or in Python if that is installed.
 - An agent. Coding agents (Claude Code, Codex, Cursor, Copilot) work inside the repository folder. A chat app (Claude, ChatGPT) works too: upload the three CSV files and the codebook, paste `PROJECT.md` as the first message, and copy the script it writes into `analysis/` yourself.
 
 ## Part A: GitHub, 10 minutes
 
 1. Fork this repository: the "Fork" button at the top right. You now own a copy under your account.
 2. Get it onto your machine: `git clone https://github.com/<your-user>/rdmai_ws26.git`, or "Open with GitHub Desktop".
-3. Open the folder in your editor and run `Rscript check.R` in a terminal. In RStudio: open `rdmai_ws26.Rproj`, then `source("check.R")` in the console. Most checks fail. That is where you start.
+3. Open the folder in an editor such as VS Code or RStudio and run `Rscript check.R` in the terminal (from an R console: `source("check.R")`). Most checks fail. That is where you start.
 
 Later you need three commands: `git add -A`, `git commit -m "message"`, `git push`.
 
@@ -67,7 +67,7 @@ The link to your fork and five lines: what step 0 answered and what it assumed; 
 
 - `check.R` says a raw file changed: `git checkout -- data/raw/` restores it. Cleaning belongs in a script under `analysis/` that writes to `data/clean/`.
 - The agent does not know the conventions: they are in `docs/codebook.md`, and your `PROJECT.md` should say so.
-- No R on your machine: cran.r-project.org, ten minutes. RStudio is optional.
+- No R on your machine: cran.r-project.org, ten minutes.
 - Anything else: the Canvas discussion first, e-mail second.
 
 ## Files
@@ -80,7 +80,7 @@ The link to your fork and five lines: what step 0 answered and what it assumed; 
 | `PROJECT.md` | Step 1: the context file, eight lines to fill |
 | `brief.md` | Step 2: the five questions of a brief, and the approved plan |
 | `check.R` | Step 3: the check. `Rscript check.R`; add `--rerun` to re-run your script as well |
-| `rdmai_ws26.Rproj` | Opens the folder as an RStudio project, working directory set |
+| `rdmai_ws26.Rproj` | Project file for RStudio users; in VS Code, just open the folder |
 | `log.md` | One line per agent session |
 | `data/raw/` | The three CSV files. Never edited |
 | `data/clean/`, `analysis/`, `outputs/` | Where the agent writes: cleaned data, the script, `answer.csv` |
