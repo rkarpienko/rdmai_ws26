@@ -13,15 +13,15 @@ The data has the traps real exports have: a column in cents, listings exported t
 ## What you need
 
 - A GitHub account (github.com, free).
-- Git on your machine, or GitHub Desktop, or neither: a Codespace runs in the browser (green "Code" button, tab "Codespaces", "Create codespace").
-- Python 3.10 or newer (`python --version`). The check needs no packages; your agent may use pandas if it is installed.
+- Git on your machine, or GitHub Desktop if you prefer buttons to commands.
+- R, version 4.1 or newer (`R --version`); RStudio optional. The check uses base R only, no packages. Your agent may write the analysis in R, or in Python if that is installed.
 - An agent. Coding agents (Claude Code, Codex, Cursor, Copilot) work inside the repository folder. A chat app (Claude, ChatGPT) works too: upload the three CSV files and the codebook, paste `PROJECT.md` as the first message, and copy the script it writes into `analysis/` yourself.
 
 ## Part A: GitHub, 10 minutes
 
 1. Fork this repository: the "Fork" button at the top right. You now own a copy under your account.
-2. Get it onto your machine: `git clone https://github.com/<your-user>/rdmai_ws26.git`, or "Open with GitHub Desktop", or a Codespace.
-3. Open the folder in your editor and run `python check.py`. Most checks fail. That is where you start.
+2. Get it onto your machine: `git clone https://github.com/<your-user>/rdmai_ws26.git`, or "Open with GitHub Desktop".
+3. Open the folder in your editor and run `Rscript check.R` in a terminal. In RStudio: open `rdmai_ws26.Rproj`, then `source("check.R")` in the console. Most checks fail. That is where you start.
 
 Later you need three commands: `git add -A`, `git commit -m "message"`, `git push`.
 
@@ -45,7 +45,7 @@ Read the plan against the list of conventions in the codebook. Change at least o
 
 ### Step 3: Give it a check to run (10 min)
 
-Let it run. Done means two things: `python check.py` passes, and you have seen evidence. Ask for the command it ran and the output, the row counts before and after each filter, the lines of the script that apply each convention. "Are you sure?" is not a check.
+Let it run. Done means two things: `Rscript check.R` passes, and you have seen evidence. Ask for the command it ran and the output, the row counts before and after each filter, the lines of the script that apply each convention. "Are you sure?" is not a check.
 
 Then do one thing by hand. Open `data/raw/users.csv` in a spreadsheet and count the students yourself, or count the rows with status `completed` in `rentals.csv`. Compare with what the agent reported. If you cannot explain the answer without the agent, you are not done.
 
@@ -61,13 +61,13 @@ git push
 
 ## What to post in Canvas
 
-The link to your fork and five lines: what step 0 answered and what it assumed; the step you changed in the plan; the evidence you asked for; the number you recomputed by hand and whether it matched; what `check.py` says.
+The link to your fork and five lines: what step 0 answered and what it assumed; the step you changed in the plan; the evidence you asked for; the number you recomputed by hand and whether it matched; what `check.R` says.
 
 ## If you get stuck
 
-- `check.py` says a raw file changed: `git checkout -- data/raw/` restores it. Cleaning belongs in a script under `analysis/` that writes to `data/clean/`.
+- `check.R` says a raw file changed: `git checkout -- data/raw/` restores it. Cleaning belongs in a script under `analysis/` that writes to `data/clean/`.
 - The agent does not know the conventions: they are in `docs/codebook.md`, and your `PROJECT.md` should say so.
-- No Python on your machine: a Codespace has it.
+- No R on your machine: cran.r-project.org, ten minutes. RStudio is optional.
 - Anything else: the Canvas discussion first, e-mail second.
 
 ## Files
@@ -79,9 +79,10 @@ The link to your fork and five lines: what step 0 answered and what it assumed; 
 | `docs/codebook.md` | Every column, every convention, every trap |
 | `PROJECT.md` | Step 1: the context file, eight lines to fill |
 | `brief.md` | Step 2: the five questions of a brief, and the approved plan |
-| `check.py` | Step 3: the check. `python check.py`; add `--rerun` to re-run your script as well |
+| `check.R` | Step 3: the check. `Rscript check.R`; add `--rerun` to re-run your script as well |
+| `rdmai_ws26.Rproj` | Opens the folder as an RStudio project, working directory set |
 | `log.md` | One line per agent session |
 | `data/raw/` | The three CSV files. Never edited |
-| `data/clean/`, `analysis/`, `outputs/` | Where the agent writes: cleaned data, the script, `answer.json` |
+| `data/clean/`, `analysis/`, `outputs/` | Where the agent writes: cleaned data, the script, `answer.csv` |
 
 The data is synthetic and was generated for this course. There are no real users, listings or rentals in it.

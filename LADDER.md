@@ -7,7 +7,7 @@ Start with a plain prompt. Climb one step only when the step below fails you in 
 | 0 Talk | Nothing. Chat, explore, throw it away | Always start here | The question asked in plain words, with the CSV files and nothing else |
 | 1 Tell it what it cannot see | One short context file the agent reads at the start of every session | It invents context or asks the same thing twice | `PROJECT.md`, copied to `CLAUDE.md` or `AGENTS.md`; pasted first in a chat app |
 | 2 Agree the plan before it acts | A brief built from five questions; the agent proposes a plan; you approve before anything is executed | It does the wrong thing confidently | `brief.md`, plan mode or "do not execute until I approve", one step changed |
-| 3 Give it a check to run | Done is a list of yes/no checks; the agent shows evidence; you open one source and recompute one number | It says done and it is not | `python check.py`, the row counts, one number counted by hand, a line in `log.md`, a commit |
+| 3 Give it a check to run | Done is a list of yes/no checks; the agent shows evidence; you open one source and recompute one number | It says done and it is not | `Rscript check.R`, the row counts, one number counted by hand, a line in `log.md`, a commit |
 | 4 Decide what it may touch | Green, amber, red for actions; the permission mode; a few rules with no exceptions | It did something that must never happen | Not part of this exercise. In the project: a permissions table in `PROJECT.md` |
 
 Only when all four hold does an agent run without you, and in this course that is rare.

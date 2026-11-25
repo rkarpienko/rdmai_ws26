@@ -1,6 +1,6 @@
 # Three questions, pick one
 
-Each question has a short form, the way you would ask a colleague, and a precise form, the one `check.py` checks. The gap between the two is where the traps live. Your brief closes the gap; `docs/codebook.md` has the conventions.
+Each question has a short form, the way you would ask a colleague, and a precise form, the one `check.R` checks. The gap between the two is where the traps live. Your brief closes the gap; `docs/codebook.md` has the conventions.
 
 ## Q1: What do owners ask per day?
 
@@ -22,19 +22,27 @@ Precise: the category with the most completed rentals by student renters, and th
 
 ## The answer file
 
-`outputs/answer.json`, written by a script in `analysis/`:
+`outputs/answer.csv`, two columns, written by a script in `analysis/` (R or Python; `write.csv(..., row.names = FALSE)` in R):
 
-```json
-{"question": "Q2", "answer": {"professional": 123.4, "student": 56.7}, "produced_by": "analysis/answer.py"}
+```
+key,value
+question,Q2
+professional,123.4
+student,56.7
+produced_by,analysis/answer.R
 ```
 
 For Q3:
 
-```json
-{"question": "Q3", "answer": {"category": "sound", "count": 12}, "produced_by": "analysis/answer.py"}
+```
+key,value
+question,Q3
+category,sound
+count,12
+produced_by,analysis/answer.R
 ```
 
-`check.py` rounds numbers to one decimal and accepts a difference of 0.1. It does not contain the answers (only salted hashes), so reading it does not help. Reading the codebook does.
+`check.R` rounds numbers to one decimal and accepts a difference of 0.1. It does not contain the answers (only salted hashes), so reading it does not help. Reading the codebook does.
 
 ## Decisions the agent makes for you unless you make them
 
