@@ -60,4 +60,4 @@ A user can be an owner (`listings.owner_id`), a renter (`rentals.renter_id`), or
 4. `price_per_day == -1` is not a price. Leave those listings out of price questions.
 5. An empty `type` is not a group. Leave those users out of comparisons by type.
 6. Rentals of deleted listings exist. A join to listings loses them; an answer about rentals must not.
-7. `data/raw/` is never edited. Cleaning is a script that writes to `data/clean/`.
+7. `data/raw/` is never edited. Cleaning happens inside `analysis/answer.R`.

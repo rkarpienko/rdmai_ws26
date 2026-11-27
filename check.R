@@ -8,11 +8,11 @@
 #   with the repository folder as the working directory.
 #   To re-run the script as well: options(ladder.rerun = TRUE) first.
 #
-# It looks only at files in this repository: data/raw/ untouched, PROJECT.md
-# and brief.md filled, outputs/answer.csv present and in the right shape, the
-# script that produced it present (and reproducing it, with --rerun), one line
-# in log.md, and whether the answer is right. The right answers are stored as
-# salted hashes: reading this file does not help, reading docs/codebook.md does.
+# It looks only at files in this folder: data/raw/ untouched, PROJECT.md filled,
+# outputs/answer.csv present and in the right shape, the script that produced it
+# present (and reproducing it, with --rerun), one line in log.md, and whether the
+# answer is right. The right answers are stored scrambled (salted hashes): reading
+# this file does not help, reading codebook.md does.
 #
 # Base R only (4.1 or newer), no packages.
 
@@ -85,11 +85,11 @@ for (name in names(RAW_MD5)) {
   }
   ok <- md5_file_lf(path) == RAW_MD5[[name]]
   record(paste("raw data untouched:", name), ok,
-         if (ok) "" else "changed. Raw data is never edited: git checkout -- data/raw/ restores it; put the cleaning in a script that writes to data/clean/")
+         if (ok) "" else "changed. Raw data is never edited: in GitHub Desktop, discard the change (or git checkout -- data/raw/). Cleaning belongs in the script")
 }
 
 # 2. context file and brief filled ---------------------------------------------
-for (fname in c("PROJECT.md", "brief.md")) {
+for (fname in "PROJECT.md") {
   if (!file.exists(p(fname))) {
     record(paste(fname, "present"), FALSE, "missing")
     next
@@ -106,7 +106,7 @@ answer <- NULL
 question <- NULL
 apath <- p("outputs", "answer.csv")
 if (!file.exists(apath)) {
-  record("outputs/answer.csv present", FALSE, "missing; see QUESTIONS.md for the shape")
+  record("outputs/answer.csv present", FALSE, "missing; see the README for the shape")
 } else {
   tab <- tryCatch(read.csv(apath, stringsAsFactors = FALSE, strip.white = TRUE, colClasses = "character"),
                   error = function(e) NULL)
@@ -117,7 +117,7 @@ if (!file.exists(apath)) {
     q <- answer[["question"]]
     keys <- setdiff(names(answer), c("question", "produced_by"))
     shape_ok <- !is.null(q) && q %in% names(ANSWERS) && setequal(keys, names(ANSWERS[[q]])) && !is.null(answer[["produced_by"]])
-    record("answer.csv has the shape from QUESTIONS.md", shape_ok,
+    record("answer.csv has the shape from the README", shape_ok,
            if (shape_ok) "" else "needs the rows question (Q1, Q2 or Q3), produced_by, and exactly the keys for that question")
     if (shape_ok) question <- q
   }
@@ -138,7 +138,7 @@ if (!is.null(question)) {
     norm <- normalise(key, answer[[key]], question)
     ok <- !is.na(norm) && md5_of(norm) %in% ANSWERS[[question]][[key]]
     record(sprintf("%s %s is right", question, key), ok,
-           if (ok) "" else "no. Not a hint, a question: which convention in docs/codebook.md did the script skip?")
+           if (ok) "" else "no. Not a hint, a question: which convention in codebook.md did the script skip?")
   }
 }
 
@@ -146,7 +146,7 @@ if (!is.null(question)) {
 if (file.exists(p("log.md"))) {
   lines <- readLines(p("log.md"), warn = FALSE, encoding = "UTF-8")
   rows <- lines[startsWith(lines, "|") & !startsWith(lines, "| Date") & !startsWith(lines, "|---") & !grepl("<", lines, fixed = TRUE)]
-  record("log.md has at least one real line", length(rows) > 0, if (length(rows)) "" else "the agent writes it, you correct it")
+  record("log.md has at least one real line", length(rows) > 0, if (length(rows)) "" else "the AI writes it, you correct it")
 } else {
   record("log.md present", FALSE, "missing")
 }
