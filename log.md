@@ -1,7 +1,7 @@
-# Session log
+# Log
 
-One line per agent session, written by the agent at the end of the session, read and corrected by the driver before the commit. This file plus the git history is the provenance record. Nobody pastes prompts into documents.
+One line per session with the AI. The AI writes it at the end, you read it and correct it, then you commit. Together with the GitHub history this is the record of how the result came about.
 
-| Date | Driver | Agent and model | Task | What changed (files) | Checks passed / failed | Open items |
+| Date | Who | Which AI | Task | Files changed | Check | Still open |
 |---|---|---|---|---|---|---|
-| <2026-11-26> | <name> | <for example Claude Code, Claude Opus 4.5> | <Q1, Q2 or Q3> | <files created or changed> | <check.R: n of m pass> | <what is still open> |
+| <2026-11-27> | <your name> | <for example Copilot Chat, GPT-5; Claude Code, Opus 4.5> | <Q1, Q2 or Q3> | <for example analysis/answer.R, outputs/answer.csv> | <all PASS, or what fails> | <anything left to do> |

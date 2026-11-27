@@ -1,6 +1,21 @@
 # Codebook: the toy marketplace export
 
-Synthetic data generated for this course. It imitates an export from a peer-to-peer equipment rental platform. Nothing in it is real. Three files, exported on 2026-11-01.
+Invented data, generated for this course. It imitates an export from a peer-to-peer equipment rental platform. Nothing in it is real. Three files, exported on 2026-11-01.
+
+## How to look at the data
+
+In the R console, with the project folder open:
+
+```r
+users    <- read.csv("data/raw/users.csv")
+listings <- read.csv("data/raw/listings.csv")
+rentals  <- read.csv("data/raw/rentals.csv")
+head(users)
+table(users$type, useNA = "ifany")
+table(rentals$status)
+```
+
+You can also open the files in Excel to look. Do not save them from Excel: it rewrites the file, and the check will notice.
 
 ## users.csv (60 rows, one per user)
 

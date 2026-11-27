@@ -1,19 +1,20 @@
 # Brief: five questions, then the plan
 
-Fill in the five answers before you give the agent the task. Then paste the whole file and the sentence at the bottom. Half a page at most.
+Answer the five questions before you give the AI the task. Most answers are already written; fill in the gaps in angle brackets and delete the brackets. Then paste the whole file to the AI, followed by the sentence at the bottom.
 
-1. What does done look like? Two or three yes/no checks an outsider could verify.
-   - `outputs/answer.csv` exists, has the shape in `QUESTIONS.md`, and `Rscript check.R` passes.
-   - <one more check of your own, for example: the row counts after each filter are reported and match what I count by hand>
-2. How can it check its own work? A script that re-runs, a count it can recompute.
-   - <for example: analysis/answer.R re-runs from data/raw/ and writes the same answer.csv; Rscript check.R --rerun confirms it>
-3. What may it touch? Files, data, tools.
+1. **What does done look like?** Two or three checks that are either true or false.
+   - `outputs/answer.csv` exists, has the shape shown in `QUESTIONS.md`, and `source("check.R")` shows all PASS.
+   - The script prints the number of rows after every filter, and the number of students matches what I count myself.
+   - <One more check of your own, or delete this line.>
+2. **How can it check its own work?**
+   - The script in `analysis/` runs from start to finish on the raw files and writes `outputs/answer.csv`. Running it twice gives the same file.
+3. **What may it touch?**
    - May: `analysis/`, `data/clean/`, `outputs/`, `log.md`. May not: `data/raw/`, anything outside this folder.
-   - <packages it may use, if any, for example dplyr; base R is enough>
-4. What stops it? Steps, a budget, a checkpoint where it waits for you.
-   - <for example: after the plan; after cleaning, before computing; before writing the log line>
-5. Where does the result go, and who signs off?
-   - `outputs/answer.csv` and one line in `log.md`. <who> reads the evidence and makes the commit.
+   - Packages: <none, or name them, for example dplyr>.
+4. **Where does it stop and wait for me?**
+   - After the plan. After cleaning, before computing the answer. <Add a stop of your own, or delete this sentence.>
+5. **Where does the result go, and who signs off?**
+   - `outputs/answer.csv` and one line in `log.md`. I read the output and I save the work to GitHub.
 
 Then say:
 
@@ -21,4 +22,4 @@ Then say:
 
 ## The plan, as approved
 
-<paste the plan here and mark the step you changed>
+<Paste the plan here and mark the step you changed.>
