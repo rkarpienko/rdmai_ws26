@@ -1,6 +1,6 @@
 # The ladder exercise
 
-RDMAI, WU Vienna, winter term 2026/27. Voluntary, not graded, about an hour. You put a small piece of work on GitHub and let an AI answer one question about a toy dataset, in four steps instead of one prompt. When you are done, post in the Canvas discussion "Ladder exercise"; you get feedback within a week.
+RDMAI, WU Vienna, winter term 2026/27. Voluntary, not graded, about an hour. You put a small piece of work on GitHub and let an AI answer one question about a toy dataset, in four steps instead of one prompt. When you are done, submit your result to the Canvas assignment "Ladder exercise"; you get feedback within a week.
 
 No Git experience needed, and only basic R: `read.csv()`, `mean()`, `table()`.
 
@@ -69,9 +69,9 @@ table(users$type)
 
 **6. Save to GitHub (5 min).** Fill in the one line in `log.md`. In GitHub Desktop, write a summary such as `Q2 answered, check passes`, click **Commit to main**, then **Push origin**. Reload your page on github.com: your work is there. (Terminal: `git add -A`, `git commit -m "..."`, `git push`.)
 
-## Post in Canvas
+## Submit in Canvas
 
-The link to your copy on GitHub and three lines: what the AI assumed in step 2, what you changed in the plan, the number you counted yourself and whether it matched.
+Open the assignment "Ladder exercise" in Canvas and submit the link to your copy on GitHub plus three lines: what the AI assumed in step 2, what you changed in the plan, the number you counted yourself and whether it matched.
 
 ## If something goes wrong
 
